@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import "../styles/globals.css";
+import "../styles/app/_layout.module.scss";
 
 export const metadata: Metadata = {
   title: "iGamingWebsite",
