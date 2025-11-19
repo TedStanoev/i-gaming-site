@@ -1,0 +1,14 @@
+@use '../main.scss' as *;
+
+.logo {
+  @include flex-row-container;
+  font-size: $font-large;
+  color: $primary-color;
+  font-weight: bold;
+  letter-spacing: 0.15rem;
+  align-items: center;
+
+  img {
+    margin-bottom: 10px;
+  }
+}

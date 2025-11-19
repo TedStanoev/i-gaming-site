@@ -1,9 +1,16 @@
 :root {
+  // Colors:
   --primary-background: #1b1f24;
   --primary-color: #d4af37;
   --secondary-color: #7a1e30;
   --accent: #0f8b4b;
   --primary-text: #f5f5f3;
+
+  // Font sizes:
+  --font-small: 14px;
+  --font-normal: 18px;
+  --font-big: 22px;
+  --font-large: 28px;
 }
 
 $primary-background: var(--primary-background);
@@ -11,6 +18,11 @@ $primary-color: var(--primary-color);
 $secondary-color: var(--secondary-color);
 $accent: var(--accent);
 $primary-text: var(--primary-text);
+
+$font-small: var(--font-small);
+$font-normal: var(--font-normal);
+$font-big: var(--font-big);
+$font-large: var(--font-large);
 
 @mixin flex-row-container {
   display: flex;
