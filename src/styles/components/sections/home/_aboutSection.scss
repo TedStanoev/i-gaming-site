@@ -1,0 +1,14 @@
+@use '../../../main' as *;
+
+.about_wrapper {
+  @include flex-row-container;
+  height: 200vh;
+}
+
+.about_sword {
+  position: fixed;
+  left: 40%;
+  top: 20%;
+  transform: rotate(-45deg);
+  opacity: 0;
+}

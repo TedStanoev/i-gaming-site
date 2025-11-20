@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
-import Header from "@/components/layout/Header";
+import Header from '@/components/layout/Header';
 
-import "../styles/app/_layout.module.scss";
+import '../styles/app/_layout.scss';
+import Wrapper from '@/components/layout/Wrapper';
 
 export const metadata: Metadata = {
-  title: "iGamingWebsite",
-  description: "Marketing IGaming Website",
+  title: 'iGamingWebsite',
+  description: 'Marketing IGaming Website',
 };
 
 export default function RootLayout({
@@ -17,8 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        {children}
+        <Wrapper>
+          <Header />
+          {children}
+        </Wrapper>
       </body>
     </html>
   );
