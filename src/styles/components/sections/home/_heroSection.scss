@@ -1,5 +1,10 @@
 @use '../../../main' as *;
 
+#scroll_pull_sword {
+  opacity: 0;
+  text-align: center;
+};
+
 .hero_wrapper {
   @include flex-row-container;
 
@@ -8,15 +13,15 @@
   flex-wrap: wrap;
   gap: 10rem;
   flex-grow: 1;
-  height: 150vh;
+  height: 250vh;
   // min-height: 60rem;
 }
 
 .hero_sword {
-  position: fixed;
+  position: absolute;
   transform: rotate(-50deg);
   top: 200px;
-  scale: 0.8;
+  scale: 0.7;
 }
 
 .hero_boulder {
@@ -28,6 +33,7 @@
 .hero_left_content {
   width: 50%;
   flex: 1;
+  position: relative;
 }
 
 .hero_right_content {

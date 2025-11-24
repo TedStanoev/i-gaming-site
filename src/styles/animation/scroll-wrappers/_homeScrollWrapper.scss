@@ -1,0 +1,8 @@
+@use '../../main.scss' as *;
+
+.home_page {
+  @include flex-col-container;
+  flex-grow: 1;
+  height: 100%;
+  overflow-x: hidden;
+} 
