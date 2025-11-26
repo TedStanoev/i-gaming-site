@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 import Header from '@/components/layout/Header';
-
-import '../styles/app/_layout.scss';
 import Wrapper from '@/components/layout/Wrapper';
+
+import '../styles/app/layout.scss';
 
 export const metadata: Metadata = {
   title: 'iGamingWebsite',

@@ -1,0 +1,61 @@
+:root {
+  // Colors:
+  // --primary-background: #01030f;
+  --primary-background: #120c02;
+  --primary-color: #D4AF37;
+  --secondary-color: #003f01;
+  --accent: #0f8b4b;
+  --primary-text: #f8f9fb;
+  --secondary-text: #232e2f;
+
+  // Font sizes:
+  --font-small: 14px;
+  --font-normal: 18px;
+  --font-big: 22px;
+  --font-large: 28px;
+  --font-xl: 40px;
+  --font-xxl: 70px;
+}
+
+$primary-background: var(--primary-background);
+$primary-color: var(--primary-color);
+$secondary-color: var(--secondary-color);
+$accent: var(--accent);
+$primary-text: var(--primary-text);
+$secondary-text: var(--secondary-text);
+
+$font-small: var(--font-small);
+$font-normal: var(--font-normal);
+$font-big: var(--font-big);
+$font-large: var(--font-large);
+$font-xl: var(--font-xl);
+$font-xxl: var(--font-xxl);
+
+@mixin flex-row-container {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-col-container {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin full-width {
+  width: 100%;
+}
+
+@mixin full-height {
+  height: 100%;
+}
+
+@mixin items-center {
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+@mixin side-padding {
+  padding-left: 15rem;
+  padding-right: 15rem;
+}

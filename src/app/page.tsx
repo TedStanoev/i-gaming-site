@@ -1,15 +1,17 @@
-import HeroSection from '@/components/sections/home/HeroSection';
-import AboutSection from '@/components/sections/home/AboutSection';
 import HomeScrollWrapper from '@/components/animation/scroll-wrappers/HomeScrollWrapper';
+import HeroSection from '@/components/sections/home/HeroSection';
+import JourneyBeginSection from '@/components/sections/home/JourneyBeginSection';
+import MapRevealSection from '@/components/sections/home/MapRevealSection';
 
-import '../styles/app/_page.scss';
+import '../styles/app/page.scss';
 
 export default function Home() {
   return (
     <HomeScrollWrapper>
       <HeroSection />
-      <AboutSection />
-      <div style={{ height: '100vh' }}></div>
+      <JourneyBeginSection />
+      {/* <div style={{ height: '100vh' }}></div> */}
+      <MapRevealSection />
     </HomeScrollWrapper>
   );
 }

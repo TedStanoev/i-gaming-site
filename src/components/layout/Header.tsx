@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Logo from '../Logo';
 
-import '@/styles/components/layout/_header.scss';
+import '@/styles/components/layout/Header.scss';
 
 export default function Header() {
   return (

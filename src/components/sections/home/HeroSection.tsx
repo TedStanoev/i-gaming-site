@@ -7,7 +7,7 @@ import Image from 'next/image';
 import SwordSrc from '@/assets/sword.png';
 import BoulderSrc from '@/assets/boulder-nobg.png';
 
-import '@/styles/components/sections/home/_heroSection.scss';
+import '@/styles/components/sections/home/HeroSection.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-import '../../../styles/animation/scroll-wrappers/_homeScrollWrapper.scss';
+import '../../../styles/animation/scroll-wrappers/HomeScrollWrapper.scss';
 import { SplitText } from 'gsap/all';
 
 type Props = {
@@ -42,14 +42,29 @@ export default function HomeScrollWrapper({ children }: Props) {
       },
     });
 
-    const about_timeline = gsap.timeline({
+    const journey_timeline = gsap.timeline({
       scrollTrigger: {
-        trigger: '.about_wrapper',
+        trigger: '.journey_wrapper',
         start: 'top top',
         end: 'bottom top',
         scrub: true,
-        pin: '.about_wrapper',
+        pin: '.journey_wrapper',
       },
+    });
+
+    const map_reveal_timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#map-reveal-section',
+        start: 'top top',
+        end: '+=3000',
+        scrub: true,
+        pin: '#map-reveal-section',
+      },
+    });
+
+    const cloud_timeline = gsap.timeline({
+      repeat: -1,
+      ease: 'linear',
     });
 
     hero_timeline
@@ -144,18 +159,29 @@ export default function HomeScrollWrapper({ children }: Props) {
       .set('.hero_sword', {
         opacity: 0,
       })
-      .set('.about_sword', {
+      .set('.journey_sword', {
         opacity: 1,
       });
 
-    about_timeline
-      .from('#about_left_content', {
+    cloud_timeline.to(
+      '.map-reveal-cloud',
+      {
+        x: 2100,
+        repeat: -1,
+        ease: 'linear',
+        stagger: 5,
+        duration: 35,
+      }
+    );
+
+    journey_timeline
+      .from('#journey_left_content', {
         x: -200,
         opacity: 0,
         ease: 'power2.in',
       })
       .from(
-        '#about_right_content',
+        '#journey_right_content',
         {
           x: 300,
           opacity: 0,
@@ -164,14 +190,14 @@ export default function HomeScrollWrapper({ children }: Props) {
         '<0'
       );
 
-    about_timeline
-      .to('#about_left_content', {
+    journey_timeline
+      .to('#journey_left_content', {
         y: -200,
         opacity: 0,
         ease: 'power2.in',
       })
       .to(
-        '#about_right_content',
+        '#journey_right_content',
         {
           y: -500,
           opacity: 0,
@@ -179,6 +205,65 @@ export default function HomeScrollWrapper({ children }: Props) {
         },
         '<0'
       );
+
+    map_reveal_timeline
+      .to('.journey_sword', {
+        rotateZ: -300,
+        opacity: 0,
+      })
+      .fromTo(
+        '.map-reveal-cloud',
+        {
+          opacity: 0,
+          x: -400,
+        },
+        {
+          opacity: 1,
+          // x: 300,
+          // stagger: {
+          //   each: 0,
+          //   onStart: function() {
+          //     cloudsTweenArr.forEach((tween, index) => {
+          //       gsap.set(tween as string, {
+          //         x: startXValues[index],
+          //       });
+          //     });
+          //   },
+          // },
+        }
+      )
+      .from('#map-reveal-forest', {
+        opacity: 0,
+      })
+      .from(
+        '#map-reveal-castle',
+        {
+          opacity: 0,
+        },
+        '<0.5'
+      )
+      .from(
+        '#map-reveal-sky',
+        {
+          opacity: 0,
+        },
+        '<0.5'
+      );
+
+    // map_reveal_timeline.fromTo(
+    //   '.map-reveal-cloud',
+    //   {
+    //     opacity: 0,
+    //     stagger: 4,
+    //     x: 0,
+    //     ease: 'power1.out'
+    //   },
+    //   {
+    //     opacity: 1,
+    //     x: 600,
+    //     repeat: -1,
+    //   },
+    // );
   }, []);
 
   return <div className="home_page">{children}</div>;

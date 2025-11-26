@@ -1,0 +1,48 @@
+@use '../../../main.scss' as *;
+
+#map-reveal-wrapper {
+  width: 100vw;
+  height: 600vh;
+  overflow-y: hidden;
+}
+
+#map-reveal-section {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+#map-reveal-sky {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1;
+}
+
+#map-reveal-forest {
+  position: absolute;
+  top: 25%;
+  width: 100vw;
+  height: 75vh;
+  object-fit: cover;
+  z-index: 3;
+}
+
+#map-reveal-castle {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 2;
+  bottom: 5rem;
+  right: 35rem;
+}
+
+.map-reveal-cloud {
+  z-index: 2;
+  position: absolute;
+  top: 3rem;
+  left: -1rem;
+  mix-blend-mode: luminosity;
+}
