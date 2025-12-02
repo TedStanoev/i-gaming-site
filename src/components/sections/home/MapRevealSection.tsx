@@ -14,6 +14,7 @@ export default function MapRevealSection() {
   return (
     <div id="map-reveal-wrapper">
       <div id="map-reveal-section">
+        <h1 id="map-reveal-heir-title">A kingdom long awaits its heir...</h1>
         <Image id="map-reveal-sky" src={SkySrc} alt="sky" />
         <Image id="map-reveal-forest" src={ForestSrc} alt="forest" />
         <Image id="map-reveal-castle" src={CastleSrc} alt="castle" />

@@ -56,7 +56,7 @@ export default function HomeScrollWrapper({ children }: Props) {
       scrollTrigger: {
         trigger: '#map-reveal-section',
         start: 'top top',
-        end: '+=3000',
+        end: '+=3200',
         scrub: true,
         pin: '#map-reveal-section',
       },
@@ -65,6 +65,10 @@ export default function HomeScrollWrapper({ children }: Props) {
     const cloud_timeline = gsap.timeline({
       repeat: -1,
       ease: 'linear',
+    });
+
+    const heirTitleSplit = new SplitText('#map-reveal-heir-title', {
+      type: 'chars',
     });
 
     hero_timeline
@@ -163,16 +167,13 @@ export default function HomeScrollWrapper({ children }: Props) {
         opacity: 1,
       });
 
-    cloud_timeline.to(
-      '.map-reveal-cloud',
-      {
-        x: 2100,
-        repeat: -1,
-        ease: 'linear',
-        stagger: 5,
-        duration: 35,
-      }
-    );
+    cloud_timeline.to('.map-reveal-cloud', {
+      x: 2100,
+      repeat: -1,
+      ease: 'linear',
+      stagger: 5,
+      duration: 35,
+    });
 
     journey_timeline
       .from('#journey_left_content', {
@@ -211,6 +212,10 @@ export default function HomeScrollWrapper({ children }: Props) {
         rotateZ: -300,
         opacity: 0,
       })
+      .from(heirTitleSplit.chars, {
+        opacity: 0,
+        stagger: 0.1,
+      })
       .fromTo(
         '.map-reveal-cloud',
         {
@@ -219,17 +224,6 @@ export default function HomeScrollWrapper({ children }: Props) {
         },
         {
           opacity: 1,
-          // x: 300,
-          // stagger: {
-          //   each: 0,
-          //   onStart: function() {
-          //     cloudsTweenArr.forEach((tween, index) => {
-          //       gsap.set(tween as string, {
-          //         x: startXValues[index],
-          //       });
-          //     });
-          //   },
-          // },
         }
       )
       .from('#map-reveal-forest', {
@@ -248,6 +242,13 @@ export default function HomeScrollWrapper({ children }: Props) {
           opacity: 0,
         },
         '<0.5'
+      )
+      .to(
+        heirTitleSplit.chars,
+        {
+          color: '#D4AF37',
+        },
+        '<0'
       );
 
     // map_reveal_timeline.fromTo(

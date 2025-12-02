@@ -46,3 +46,14 @@
   left: -1rem;
   mix-blend-mode: luminosity;
 }
+
+#map-reveal-heir-title {
+    z-index: 3;
+    text-align: center;
+    text-transform: uppercase;
+    position: absolute;
+    top: 25%;
+    font-size: $font-xxl;
+    color: $secondary-text;
+    width: 100%;
+}
