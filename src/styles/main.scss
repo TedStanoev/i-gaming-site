@@ -15,7 +15,10 @@
   --font-large: 28px;
   --font-xl: 40px;
   --font-xxl: 70px;
+  --font-title: 120px;
 }
+
+$font-prodigy: var(--font-prodigy);
 
 $primary-background: var(--primary-background);
 $primary-color: var(--primary-color);
@@ -30,6 +33,24 @@ $font-big: var(--font-big);
 $font-large: var(--font-large);
 $font-xl: var(--font-xl);
 $font-xxl: var(--font-xxl);
+$font-title: var(--font-title);
+
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+@mixin screen($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+}
 
 @mixin flex-row-container {
   display: flex;

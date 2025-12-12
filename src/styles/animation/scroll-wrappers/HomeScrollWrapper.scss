@@ -1,6 +1,6 @@
 @use '../../main.scss' as *;
 
-.home_page {
+#home_page {
   @include flex-col-container;
   flex-grow: 1;
   height: 100%;

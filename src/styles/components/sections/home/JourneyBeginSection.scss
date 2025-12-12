@@ -1,14 +1,14 @@
 @use '../../../main' as *;
 
-.journey_wrapper {
+.journey-wrapper {
   @include flex-row-container;
   @include side-padding;
 
-  height: 100vh;
+  height: 250vh;
   gap: 10rem;
 }
 
-.journey_sword {
+.journey-sword {
   position: fixed;
   left: 35%;
   top: 20%;
@@ -16,21 +16,24 @@
   opacity: 0;
 }
 
-#journey_left_content,
-#journey_right_content {
+#journey-left-content,
+#journey-right-content {
   width: 50%;
 
+
   h1 {
-    font-size: $font-xxl;
-    text-align: center;
+    font-size: $font-title;
+    text-transform: uppercase;
   }
 }
 
-#journey_left_content {
+#journey-left-content {
   margin-top: 10%;
+  text-align: right;
 }
-#journey_right_content {
+#journey-right-content {
+  text-align: left;
+  margin-top: 20%;
   display: flex;
-  align-items: end;
   justify-content: start;
 }

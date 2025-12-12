@@ -2,8 +2,8 @@
 
 #map-reveal-wrapper {
   width: 100vw;
-  height: 600vh;
-  overflow-y: hidden;
+  height: 780vh;
+  overflow: hidden;
 }
 
 #map-reveal-section {
@@ -21,6 +21,16 @@
   z-index: 1;
 }
 
+#map-reveal-dark-sky {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 130vh;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0;
+}
+
 #map-reveal-forest {
   position: absolute;
   top: 25%;
@@ -28,15 +38,6 @@
   height: 75vh;
   object-fit: cover;
   z-index: 3;
-}
-
-#map-reveal-castle {
-  position: absolute;
-  width: 300px;
-  height: 200px;
-  z-index: 2;
-  bottom: 5rem;
-  right: 35rem;
 }
 
 .map-reveal-cloud {
@@ -48,12 +49,24 @@
 }
 
 #map-reveal-heir-title {
-    z-index: 3;
-    text-align: center;
-    text-transform: uppercase;
-    position: absolute;
-    top: 25%;
-    font-size: $font-xxl;
-    color: $secondary-text;
-    width: 100%;
+  z-index: 3;
+  text-align: center;
+  text-transform: uppercase;
+  position: absolute;
+  top: 25%;
+  font-size: $font-xxl;
+  color: $secondary-text;
+  width: 100%;
+}
+
+#map-reveal-dawn-title {
+  z-index: 3;
+  text-align: center;
+  text-transform: uppercase;
+  position: absolute;
+  top: 25%;
+  font-size: $font-xxl;
+  color: $primary-text;
+  width: 100%;
+  opacity: 1;
 }

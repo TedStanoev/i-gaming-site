@@ -1,11 +1,13 @@
 'use client';
 
-import { ReactNode } from 'react';
 import gsap from 'gsap';
+import { ReactNode } from 'react';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger, SplitText } from 'gsap/all';
 
 import '../../../styles/animation/scroll-wrappers/HomeScrollWrapper.scss';
-import { SplitText } from 'gsap/all';
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Props = {
   children: ReactNode;
@@ -13,42 +15,23 @@ type Props = {
 
 export default function HomeScrollWrapper({ children }: Props) {
   useGSAP(() => {
-    const heroFirstText = new SplitText('#hero_title', {
-      type: 'lines',
-    });
-    const scroll_pull_text = new SplitText('#scroll_pull_sword', {
-      type: 'lines',
-    });
-
-    gsap.from('.hero_left_content', {
-      y: 300,
-      opacity: 0,
-      duration: 0.6,
-    });
-    gsap.from(heroFirstText.lines, {
-      y: 500,
-      opacity: 0,
-      stagger: 0.5,
-      duration: 0.6,
-    });
-
     const hero_timeline = gsap.timeline({
       scrollTrigger: {
-        trigger: '.hero_wrapper',
+        trigger: '.hero-wrapper',
         start: 'top top',
         end: 'bottom center',
         scrub: true,
-        pin: '.hero_wrapper',
+        pin: '.hero-wrapper',
       },
     });
 
     const journey_timeline = gsap.timeline({
       scrollTrigger: {
-        trigger: '.journey_wrapper',
+        trigger: '.journey-wrapper',
         start: 'top top',
         end: 'bottom top',
         scrub: true,
-        pin: '.journey_wrapper',
+        pin: '.journey-wrapper',
       },
     });
 
@@ -56,7 +39,7 @@ export default function HomeScrollWrapper({ children }: Props) {
       scrollTrigger: {
         trigger: '#map-reveal-section',
         start: 'top top',
-        end: '+=3200',
+        end: '+=6200',
         scrub: true,
         pin: '#map-reveal-section',
       },
@@ -66,14 +49,158 @@ export default function HomeScrollWrapper({ children }: Props) {
       repeat: -1,
       ease: 'linear',
     });
+    const fire_visitor_timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#fire-visitor-section',
+        start: 'top 0',
+        end: '+=1500',
+        scrub: true,
+        pin: true,
+      },
+    });
 
+    const heroTitleSplit = new SplitText('#hero-title', {
+      type: 'lines',
+    });
+    const pullSwordLeftTitleSplit = new SplitText('#hero-pull-sword-left', {
+      type: 'words',
+    });
+    const pullSwordRightTitleSplit = new SplitText('#hero-pull-sword-right', {
+      type: 'words',
+    });
+    const journeyLeftTitleSplit = new SplitText('#journey-left-content', {
+      type: 'words',
+    });
+    const journeyRightTitleSplit = new SplitText('#journey-right-content', {
+      type: 'words',
+    });
     const heirTitleSplit = new SplitText('#map-reveal-heir-title', {
       type: 'chars',
     });
+    const dawnTitleSplit = new SplitText('#map-reveal-dawn-title', {
+      type: 'words',
+    });
+    const visitorTitleSplit = new SplitText('#fire-visitor-stranger-title', {
+      type: 'words',
+    });
+    const visitorSitsTitleSplit = new SplitText(
+      '#fire-visitor-stranger-sits-title',
+      {
+        type: 'words',
+      }
+    );
+
+    gsap.from('.hero-front-content', {
+      y: 300,
+      opacity: 0,
+      duration: 0.6,
+    });
+
+    gsap
+      .timeline()
+      .from(heroTitleSplit.lines[0], {
+        x: 1500,
+        duration: 0.6,
+        fontStyle: 'italic',
+      })
+      .fromTo(
+        heroTitleSplit.lines[1],
+        {
+          x: -2500,
+          duration: 0.6,
+          fontStyle: 'italic',
+        },
+        { x: -100, fontStyle: 'normal' },
+        '<0.5'
+      )
+      .fromTo(
+        heroTitleSplit.lines[2],
+        {
+          x: 1500,
+          duration: 0.6,
+          fontStyle: 'italic',
+        },
+        {
+          x: 100,
+          fontStyle: 'normal',
+        },
+        '<0.5'
+      );
 
     hero_timeline
+      // .to(
+      //   '.hero-back-content',
+      //   {
+      //     x: 200,
+      //   },
+      //   '<0'
+      // )
+      .to(
+        heroTitleSplit.lines[0],
+        {
+          x: -300,
+          opacity: 0,
+        },
+        '<0'
+      )
+      .to(
+        heroTitleSplit.lines[1],
+        {
+          x: 300,
+          opacity: 0,
+        },
+        '<0'
+      )
+      .to(
+        heroTitleSplit.lines[2],
+        {
+          x: -300,
+          opacity: 0,
+        },
+        '<0'
+      )
+      .to(
+        '.hero-sword',
+        {
+          left: '35%',
+        },
+        '<0'
+      )
+      .to(
+        '.hero-boulder',
+        {
+          left: '35%',
+        },
+        '<0'
+      )
       .fromTo(
-        '.hero_sword',
+        pullSwordLeftTitleSplit.words,
+        {
+          x: -1500,
+          opacity: 0.5,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          stagger: 0.7,
+        },
+        '<0.5'
+      )
+      .fromTo(
+        pullSwordRightTitleSplit.words,
+        {
+          x: -1500,
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          stagger: 0.7,
+        },
+        '<0.7'
+      )
+      .fromTo(
+        '.hero-sword',
         {
           transform: 'rotate(-60deg)',
           ease: 'power1.in',
@@ -81,59 +208,38 @@ export default function HomeScrollWrapper({ children }: Props) {
         {
           transform: 'rotate(-45deg)',
           ease: 'power1.out',
-          repeat: 3,
+          repeat: 5,
           yoyo: true,
         }
       )
       .to(
-        '.hero_right_content',
+        pullSwordLeftTitleSplit.words,
         {
-          x: 200,
+          transform: 'skew(-10deg)',
+          ease: 'power1.out',
+          repeat: 5,
+          yoyo: true,
         },
         '<0'
       )
       .to(
-        '#hero_title',
+        pullSwordRightTitleSplit.words,
         {
-          y: -300,
-          opacity: 0,
-        },
-        '<0'
-      )
-      .fromTo(
-        '#scroll_pull_sword',
-        {
-          y: 300,
-          opacity: 0,
-        },
-        {
-          y: -300,
-          opacity: 1,
-        },
-        '<0'
-      )
-      .to(
-        '.hero_sword',
-        {
-          left: '78%',
-        },
-        '<0'
-      )
-      .to(
-        '.hero_boulder',
-        {
-          left: '78%',
+          transform: 'skew(10deg)',
+          ease: 'power1.out',
+          repeat: 5,
+          yoyo: true,
         },
         '<0'
       );
 
     hero_timeline
-      .to('.hero_boulder', {
+      .to('.hero-boulder', {
         y: 300,
         ease: 'power1.in',
       })
       .to(
-        '.hero_sword',
+        '.hero-sword',
         {
           y: -50,
           x: -50,
@@ -141,29 +247,38 @@ export default function HomeScrollWrapper({ children }: Props) {
         },
         '<0'
       )
-      .to('.hero_boulder', {
-        opacity: 0,
-        ease: 'power1.inOut',
-      })
       .to(
-        scroll_pull_text.lines,
+        pullSwordLeftTitleSplit.words,
         {
           opacity: 0,
           x: 500,
           stagger: 0.2,
         },
         '<0'
-      );
+      )
+      .to(
+        pullSwordRightTitleSplit.words,
+        {
+          opacity: 0,
+          x: 500,
+          stagger: 0.2,
+        },
+        '<0'
+      )
+      .to('.hero-boulder', {
+        opacity: 0,
+        ease: 'power1.inOut',
+      });
 
     hero_timeline
-      .to('.hero_sword', {
+      .to('.hero-sword', {
         transform: 'rotate(-45deg)',
         ease: 'power1.in',
       })
-      .set('.hero_sword', {
+      .set('.hero-sword', {
         opacity: 0,
       })
-      .set('.journey_sword', {
+      .set('.journey-sword', {
         opacity: 1,
       });
 
@@ -176,29 +291,30 @@ export default function HomeScrollWrapper({ children }: Props) {
     });
 
     journey_timeline
-      .from('#journey_left_content', {
+      .from(journeyLeftTitleSplit.words, {
         x: -200,
         opacity: 0,
         ease: 'power2.in',
+        stagger: 0.2,
       })
       .from(
-        '#journey_right_content',
+        journeyRightTitleSplit.words,
         {
           x: 300,
           opacity: 0,
           ease: 'power2.in',
+          stagger: 0.2,
         },
-        '<0'
       );
 
     journey_timeline
-      .to('#journey_left_content', {
+      .to('#journey-left-content', {
         y: -200,
         opacity: 0,
         ease: 'power2.in',
       })
       .to(
-        '#journey_right_content',
+        '#journey-right-content',
         {
           y: -500,
           opacity: 0,
@@ -208,7 +324,7 @@ export default function HomeScrollWrapper({ children }: Props) {
       );
 
     map_reveal_timeline
-      .to('.journey_sword', {
+      .to('.journey-sword', {
         rotateZ: -300,
         opacity: 0,
       })
@@ -230,18 +346,11 @@ export default function HomeScrollWrapper({ children }: Props) {
         opacity: 0,
       })
       .from(
-        '#map-reveal-castle',
-        {
-          opacity: 0,
-        },
-        '<0.5'
-      )
-      .from(
         '#map-reveal-sky',
         {
           opacity: 0,
         },
-        '<0.5'
+        '<1'
       )
       .to(
         heirTitleSplit.chars,
@@ -249,23 +358,80 @@ export default function HomeScrollWrapper({ children }: Props) {
           color: '#D4AF37',
         },
         '<0'
+      )
+      .to(
+        heirTitleSplit.chars,
+        {
+          opacity: 0,
+          stagger: 0.1,
+        },
+        '<1.5'
+      )
+      .fromTo(
+        dawnTitleSplit.words,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          stagger: 0.3,
+        },
+        '<0.5'
+      )
+      .to(
+        '#map-reveal-sky',
+        {
+          opacity: 0,
+        },
+        '<0.8'
+      )
+      .to(
+        '#map-reveal-dark-sky',
+        {
+          opacity: 1,
+        },
+        '<0.5'
       );
 
-    // map_reveal_timeline.fromTo(
-    //   '.map-reveal-cloud',
-    //   {
-    //     opacity: 0,
-    //     stagger: 4,
-    //     x: 0,
-    //     ease: 'power1.out'
-    //   },
-    //   {
-    //     opacity: 1,
-    //     x: 600,
-    //     repeat: -1,
-    //   },
-    // );
+    fire_visitor_timeline
+      .fromTo(
+        '#fire-visitor-video',
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+        },
+        '<0.5'
+      )
+      .from(visitorTitleSplit.words, {
+        opacity: 0,
+        stagger: 0.3,
+      })
+      .from(visitorSitsTitleSplit.words, {
+        opacity: 0,
+        stagger: 0.3,
+      })
+      .to(visitorTitleSplit.words, {
+        opacity: 0,
+        stagger: 0.3,
+      })
+      .to(visitorSitsTitleSplit.words, {
+        opacity: 0,
+        stagger: 0.3,
+      })
+      .fromTo(
+        '#fire-visitor-conversation-section',
+        {
+          opacity: 0,
+          x: '120vw',
+        },
+        {
+          opacity: 1,
+          x: 0,
+        }
+      );
   }, []);
 
-  return <div className="home_page">{children}</div>;
+  return <div id="home_page">{children}</div>;
 }

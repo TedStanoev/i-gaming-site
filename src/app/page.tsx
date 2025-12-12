@@ -2,6 +2,7 @@ import HomeScrollWrapper from '@/components/animation/scroll-wrappers/HomeScroll
 import HeroSection from '@/components/sections/home/HeroSection';
 import JourneyBeginSection from '@/components/sections/home/JourneyBeginSection';
 import MapRevealSection from '@/components/sections/home/MapRevealSection';
+import FireVisitorSection from '@/components/sections/home/FireVisitorSection';
 
 import '../styles/app/page.scss';
 
@@ -10,8 +11,9 @@ export default function Home() {
     <HomeScrollWrapper>
       <HeroSection />
       <JourneyBeginSection />
-      {/* <div style={{ height: '100vh' }}></div> */}
       <MapRevealSection />
+      <FireVisitorSection />
+      <div style={{ height: '100vh' }}></div>
     </HomeScrollWrapper>
   );
 }
