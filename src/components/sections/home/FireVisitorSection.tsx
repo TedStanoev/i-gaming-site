@@ -4,9 +4,6 @@ import { useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import Image from 'next/image';
-
-import HoodedStrangerImageSrc from '@/assets/hooded-stranger.png';
 
 import '@/styles/components/sections/home/FireVisitorSection.scss';
 
@@ -25,9 +22,9 @@ export default function FireVisitorSection() {
     video.onloadedmetadata = () => {
       gsap.to(scrollData, {
         scrollTrigger: {
-          trigger: '#fire-visitor-section',
-          start: 'top top',
-          end: '+=5000',
+          trigger: '#fire-visitor-wrapper',
+          start: 'top -1500',
+          end: 'bottom bottom',
           scrub: true,
         },
         frame: video.duration,
@@ -50,10 +47,18 @@ export default function FireVisitorSection() {
           </h1>
         </div>
         <div id="fire-visitor-conversation-section">
-          <div id="fire-visitor-image">
-            <Image src={HoodedStrangerImageSrc} alt="hooded-stranger" width={750} height={600}></Image>
+          <div
+            className="fire-visitor-bubble bg-purple"
+            id="fire-visitor-first-bubble"
+          >
+            {`You finally arrived...\nThe Kingdom has waited for someone who can wield that sword`}
           </div>
-          <div id="fire-visitor-text">The stranger looks at you and says:</div>
+          <div
+            className="fire-visitor-bubble bg-blue"
+            id="fire-visitor-second-bubble"
+          >
+            Who are you?
+          </div>
         </div>
       </div>
       {createPortal(

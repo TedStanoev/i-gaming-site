@@ -2,7 +2,7 @@
 
 #fire-visitor-wrapper {
   width: 100vw;
-  height: 650vh;
+  height: 850vh;
   overflow: hidden;
   position: relative;
 }
@@ -14,7 +14,7 @@
 }
 
 #fire-visitor-stranger-title {
-  z-index: 3;
+  // z-index: 3;
   text-align: center;
   text-transform: uppercase;
   font-size: $font-xxl;
@@ -24,7 +24,7 @@
 }
 
 #fire-visitor-stranger-sits-title {
-  z-index: 3;
+  // z-index: 3;
   text-align: center;
   text-transform: uppercase;
   font-size: $font-xxl;
@@ -32,17 +32,18 @@
   width: 100%;
   opacity: 1;
   position: fixed;
-  top: 12%;
+  top: 9.5%;
 }
 
 #fire-visitor-video {
   position: fixed;
-  top: 30%;
-  left: 25%;
-  width: 50%;
-  height: 50%;
+  width: 90%;
+  height: 90%;
+  left: 5%;
+  top: 5%;
   object-fit: cover;
   border-radius: 20px;
+  z-index: 1;
 }
 
 #fire-visitor-conversation-section {
@@ -74,5 +75,57 @@
     height: 100%;
     color: $primary-text;
     font-size: $font-xl;
+  }
+}
+
+#fire-visitor-first-bubble {
+  position: fixed;
+  right: 10%;
+  top: 25%;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 85%,
+    15% 85%,
+    10% 100%,
+    10% 85%,
+    0% 85%
+  );
+  z-index: 2;
+}
+
+#fire-visitor-second-bubble {
+  position: fixed;
+  left: 20%;
+  top: 30%;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 85%,
+    15% 85%,
+    20% 100%,
+    10% 85%,
+    0% 85%
+  );
+  z-index: 2;
+}
+
+.fire-visitor-bubble {
+  border-radius: 10%;
+  white-space: pre-line;
+  font-size: $font-normal;
+  padding: 30px;
+  width: fit-content;
+  height: fit-content;
+  max-width: 300px;
+
+  &.bg-purple {
+    background-color: #62487d;
+    color: #fdfbff;
+  }
+
+  &.bg-blue {
+    background-color: #4a6fa5;
+    color: #fdfbff;
   }
 }

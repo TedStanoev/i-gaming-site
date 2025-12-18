@@ -53,7 +53,8 @@ export default function HomeScrollWrapper({ children }: Props) {
       scrollTrigger: {
         trigger: '#fire-visitor-section',
         start: 'top 0',
-        end: '+=1500',
+        //end: '+=3000',
+        end: 'center top',
         scrub: true,
         pin: true,
       },
@@ -297,15 +298,12 @@ export default function HomeScrollWrapper({ children }: Props) {
         ease: 'power2.in',
         stagger: 0.2,
       })
-      .from(
-        journeyRightTitleSplit.words,
-        {
-          x: 300,
-          opacity: 0,
-          ease: 'power2.in',
-          stagger: 0.2,
-        },
-      );
+      .from(journeyRightTitleSplit.words, {
+        x: 300,
+        opacity: 0,
+        ease: 'power2.in',
+        stagger: 0.2,
+      });
 
     journey_timeline
       .to('#journey-left-content', {
@@ -359,14 +357,6 @@ export default function HomeScrollWrapper({ children }: Props) {
         },
         '<0'
       )
-      .to(
-        heirTitleSplit.chars,
-        {
-          opacity: 0,
-          stagger: 0.1,
-        },
-        '<1.5'
-      )
       .fromTo(
         dawnTitleSplit.words,
         {
@@ -394,24 +384,27 @@ export default function HomeScrollWrapper({ children }: Props) {
       );
 
     fire_visitor_timeline
-      .fromTo(
-        '#fire-visitor-video',
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-        },
-        '<0.5'
-      )
       .from(visitorTitleSplit.words, {
         opacity: 0,
+        y: 200,
         stagger: 0.3,
       })
       .from(visitorSitsTitleSplit.words, {
         opacity: 0,
+        y: 200,
         stagger: 0.3,
       })
+      .fromTo(
+        '#fire-visitor-video',
+        {
+          opacity: 0,
+          scale: 0.1,
+        },
+        {
+          scale: 1,
+          opacity: 1,
+        }
+      )
       .to(visitorTitleSplit.words, {
         opacity: 0,
         stagger: 0.3,
@@ -420,16 +413,28 @@ export default function HomeScrollWrapper({ children }: Props) {
         opacity: 0,
         stagger: 0.3,
       })
-      .fromTo(
-        '#fire-visitor-conversation-section',
+      .from('#fire-visitor-video', {
+        top: '30%',
+        left: '25%',
+        width: '50%',
+        height: '50%',
+        padding: 0,
+      })
+      .from(
+        '#fire-visitor-first-bubble',
         {
           opacity: 0,
-          x: '120vw',
+          scale: 0,
         },
+        '<1'
+      )
+      .from(
+        '#fire-visitor-second-bubble',
         {
-          opacity: 1,
-          x: 0,
-        }
+          opacity: 0,
+          scale: 0,
+        },
+        '<1'
       );
   }, []);
 
