@@ -1,0 +1,44 @@
+@use '../../../main.scss' as *;
+
+#prophet-conversation-wrapper {
+  width: 100vw;
+  height: 550vh;
+  overflow: hidden;
+  position: relative;
+  z-index: 3;
+}
+
+#prophet-conversation-section {
+  height: 100%;
+  width: 100vw;
+  position: relative;
+}
+
+#prophet-conversation-part-one {
+  @include flex-row-container;
+  @include side-padding;
+  justify-content: center;
+  align-items: start;
+  height: 100vh;
+  gap: 5%;
+
+  #prophet-conversation-image {
+    max-height: 80vh;
+    border: 15px solid black;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+    background-color: black;
+    margin: auto;
+  }
+
+  h1 {
+    font-size: $font-title;
+    color: $primary-text;
+    text-align: start;
+    text-transform: uppercase;
+    line-height: 125px;
+  }
+}
+
+#prophet-conversation-inner-container {
+  @include flex-col-container;
+}

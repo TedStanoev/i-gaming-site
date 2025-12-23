@@ -54,9 +54,18 @@ export default function HomeScrollWrapper({ children }: Props) {
         trigger: '#fire-visitor-section',
         start: 'top 0',
         //end: '+=3000',
-        end: 'center top',
+        end: 'bottom bottom',
         scrub: true,
         pin: true,
+      },
+    });
+    const prophet_conv_timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#prophet-conversation-wrapper',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: true,
+        pin: '#prophet-conversation-wrapper',
       },
     });
 
@@ -89,6 +98,14 @@ export default function HomeScrollWrapper({ children }: Props) {
       {
         type: 'words',
       }
+    );
+    const prohpetLineOneSplit = new SplitText(
+      '#prophet-conversation-text-line-one',
+      { type: 'words' }
+    );
+    const prohpetLineTwoSplit = new SplitText(
+      '#prophet-conversation-text-line-two',
+      { type: 'words' }
     );
 
     gsap.from('.hero-front-content', {
@@ -435,7 +452,55 @@ export default function HomeScrollWrapper({ children }: Props) {
           scale: 0,
         },
         '<1'
+      )
+      .to(
+        '.fire-visitor-bubble',
+        {
+          opacity: 0,
+        },
+        '<5'
+      )
+      .to(
+        '#fire-visitor-video',
+        {
+          filter: 'blur(20px)',
+          opacity: 0.5,
+        },
+        '<0'
       );
+
+    prophet_conv_timeline
+
+      .from(prohpetLineOneSplit.words, {
+        opacity: 0,
+        y: 200,
+        x: 100,
+        stagger: 0.3,
+        ease: 'power1.inOut',
+      })
+      .to(
+        '#fire-visitor-video',
+        {
+          opacity: 0,
+        },
+        '<0'
+      )
+      .from(
+        '#prophet-conversation-image',
+        {
+          opacity: 0,
+          y: 200,
+          x: 100,
+          ease: 'power1.inOut',
+        },
+        '<0.5'
+      )
+      .from(prohpetLineTwoSplit.words, {
+        opacity: 0,
+        y: 200,
+        stagger: 0.3,
+        ease: 'power1.inOut',
+      });
   }, []);
 
   return <div id="home_page">{children}</div>;

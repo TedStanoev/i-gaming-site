@@ -51,7 +51,7 @@ export default function FireVisitorSection() {
             className="fire-visitor-bubble bg-purple"
             id="fire-visitor-first-bubble"
           >
-            {`You finally arrived...\nThe Kingdom has waited for someone who can wield that sword`}
+            {`You finally arrived...\nThe prophecy spoke of you.`}
           </div>
           <div
             className="fire-visitor-bubble bg-blue"
